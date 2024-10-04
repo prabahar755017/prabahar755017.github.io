@@ -23,3 +23,30 @@ window.onclick = function(event) {
         modal.style.display = "none";
     }
 }
+// Toggle the mobile menu
+function toggleMenu() {
+    const navLinks = document.querySelector('.nav-links');
+    navLinks.classList.toggle('show');
+}
+
+// Smooth scroll to section and highlight the active menu link
+function navigateToSection(event, sectionId) {
+    event.preventDefault();  // Prevent default link behavior
+
+    // Scroll smoothly to the section
+    const section = document.getElementById(sectionId);
+    section.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+    });
+
+    // Highlight the active menu link
+    const links = document.querySelectorAll('.nav-links a');
+    links.forEach(link => link.classList.remove('active'));  // Remove active class from all
+    event.target.classList.add('active');  // Add active class to the clicked link
+
+    // Close mobile menu (if open) after click
+    const navLinks = document.querySelector('.nav-links');
+    navLinks.classList.remove('show');
+}
+
